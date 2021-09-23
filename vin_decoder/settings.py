@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-5*7_%=@**8r)f_2uccu^3)3(*&9st&t(a1o84hj0kbcunp=rvz
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -75,11 +75,14 @@ WSGI_APPLICATION = 'vin_decoder.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'vin_decoder_db',
+        'USER': 'vin_decoder_user',
+        'PASSWORD': 'vin_decoder_12345',
+        'HOST': 'db',
+        'PORT': 5432,
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
