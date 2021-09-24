@@ -2,19 +2,21 @@ version: "3.9"
    
 services:
   db:
-    image: postgres
+    image: "postgres"
+    ports:
+    - "5432:5432"
     volumes:
       - ./data/db:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_DB=vim_decoder_db
-      - POSTGRES_USER=vin_decoder_user
-      - POSTGRES_PASSWORD=vin_decoder_12345
   web:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
+    env_file:
+      - .env
     volumes:
       - .:/code
     ports:
       - "8000:8000"
     depends_on:
       - db
+volumes:
+  postgres_data:
