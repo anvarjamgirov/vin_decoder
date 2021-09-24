@@ -1,0 +1,93 @@
+swagger: '2.0'
+info:
+  title: VIN Decoder API
+  version: v1
+host: 0.0.0.0:8000
+schemes:
+  - http
+basePath: /api
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  Basic:
+    type: basic
+security:
+  - Basic: []
+paths:
+  /vin-decoder/:
+    get:
+      operationId: vin-decoder_list
+      summary: VIN Decoder
+      description: Use this method to decode VIN by VIN number
+      parameters:
+        - name: vin_code
+          in: query
+          description: VIN number
+          required: true
+          type: string
+          minLength: 1
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/VINDecodeResponse'
+        '404':
+          description: Not Found
+      tags:
+        - vin-decoder
+    parameters: []
+definitions:
+  VINDecodeResponse:
+    required:
+      - vin_code
+      - make
+      - model
+      - year
+      - manufacturer
+      - engine
+      - trim
+      - transmission
+    type: object
+    properties:
+      vin_code:
+        title: Vin code
+        type: string
+        maxLength: 63
+        minLength: 1
+      make:
+        title: Make
+        type: string
+        maxLength: 511
+        minLength: 1
+      model:
+        title: Model
+        type: string
+        maxLength: 511
+        minLength: 1
+      year:
+        title: Year
+        type: string
+        maxLength: 7
+        minLength: 1
+      manufacturer:
+        title: Manufacturer
+        type: string
+        maxLength: 127
+        minLength: 1
+      engine:
+        title: Engine
+        type: string
+        maxLength: 127
+        minLength: 1
+      trim:
+        title: Trim
+        type: string
+        maxLength: 63
+        minLength: 1
+      transmission:
+        title: Transmission
+        type: string
+        maxLength: 63
+        minLength: 1
