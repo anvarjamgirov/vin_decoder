@@ -3,7 +3,7 @@ VIN Decoder - amazing microservice to decode and get vehicle information.
 
 ## Deployment
 + clone the repo
-+ create .env file inside main directory, in our case it is 'cloudy' folder (top one, not the one with settings.py)
++ create .env file inside main directory, in our case it is 'vin_decoder' folder (top one, not the one with settings.py)
 + put these value into `.env`: 
 ```
     SECRET_KEY=<DJANGO_PROJECT_SECRET_KEY>
